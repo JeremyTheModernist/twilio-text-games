@@ -1,5 +1,5 @@
 exports.handler = async () => {
-  console.log('CHECK OUT ALL MY COUNTS', count);
+  console.log('CHECK OUT ALL MY MESSAGE');
   return {
     statusCode: 200,
     headers: {
