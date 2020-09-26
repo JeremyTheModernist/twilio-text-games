@@ -1,5 +1,10 @@
 exports.handler = async () => {
-  console.log('WORKING AWAY ON SMS');
+  if (!count) {
+    var count = 0;
+  } else {
+    count += 1;
+  }
+  console.log('CHECK OUT ALL MY COUNTS', count);
   return {
     statusCode: 200,
     body: 'OK Rocking and a rolling',
