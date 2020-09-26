@@ -1,5 +1,5 @@
 exports.handler = async () => {
-  if (!count) {
+  if (count === 0) {
     var count = 0;
   } else {
     count += 1;
