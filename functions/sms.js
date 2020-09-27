@@ -24,10 +24,9 @@ exports.handler = async (event) => {
 
   // after the document is created then just use the update method
 
-  //   console.log('TWILIO RESULT', result);
-  const { Body } = qs.parse(event.body);
-  console.log('CHECK OUT ALL MY MESSAGE', Body);
-  const vote = Body.match(/yes/i) ? 'yes' : 'no';
+  //   const { Body } = qs.parse(event.body);
+  //   console.log('CHECK OUT ALL MY MESSAGE', Body);
+  //   const vote = Body.match(/yes/i) ? 'yes' : 'no';
 
   const { data } = await twilio.sync
     .services(process.env.TWILIO_SERVICE_SID)
