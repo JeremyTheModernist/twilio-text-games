@@ -16,35 +16,34 @@ exports.handler = async (event) => {
   //   twilio doesn't enforce a strict data structure, but when you update it it should maintain the same structure
   //   so you need to remember the document name you pass
 
-  const result = await twilio.sync
-    .services(process.env.TWILIO_SERVICE_SID)
-    .documents.create({
-      uniqueName: 'JSB Second Text To Vote Results',
-    });
+  //   const result = await twilio.sync
+  //     .services(process.env.TWILIO_SERVICE_SID)
+  //     .documents.create({
+  //       uniqueName: 'JSB Second Text To Vote Results',
+  //     });
 
   // after the document is created then just use the update method
 
-  console.log('HERE IS THE RESULT ', result);
   const { Body } = qs.parse(event.body);
   console.log('CHECK OUT ALL MY MESSAGE', Body);
-  //   const vote = Body.match(/yes/i) ? 'yes' : 'no';
+  const vote = Body.match(/yes/i) ? 'yes' : 'no';
 
-  //   const { data } = await twilio.sync
-  //     .services(process.env.TWILIO_SERVICE_SID)
-  //     .documents()
-  //     .fetch();
+  const { data } = await twilio.sync
+    .services(process.env.TWILIO_SERVICE_SID)
+    .documents('ET3140bba078df4806974cbb49e2bd95be')
+    .fetch();
 
-  //   console.log('TWILIO FETCH RESULT', data);
+  console.log('TWILIO FETCH RESULT', data);
 
-  //   const newData = {
-  //     ...data,
-  //     [vote]: data[vote] + 1,
-  //   };
+  const newData = {
+    ...data,
+    [vote]: data[vote] + 1,
+  };
 
-  //   await twilio.sync
-  //     .services(process.env.TWILIO_SERVICE_SID)
-  //     .documents('IS7473257f7b67069feeb8afe54f1732aa')
-  //     .update({ data: newData });
+  await twilio.sync
+    .services(process.env.TWILIO_SERVICE_SID)
+    .documents('ET3140bba078df4806974cbb49e2bd95be')
+    .update({ data: newData });
 
   return {
     statusCode: 200,
@@ -53,7 +52,7 @@ exports.handler = async (event) => {
     },
     body: `
         <Response>
-            <Message>Thank you for voting. Your replied with:  ${Body} on sandwiches</Message>
+            <Message>Thank you for voting. Your replied with:  ${vote} on sandwiches</Message>
         </Response>
     `,
   };
