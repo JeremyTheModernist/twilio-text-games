@@ -1,5 +1,5 @@
 exports.handler = async (event) => {
-  const { body } = JSON.parse(even.body);
+  const { body } = JSON.parse(event.body);
   console.log('CHECK OUT ALL MY MESSAGE'.event);
   return {
     statusCode: 200,
