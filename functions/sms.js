@@ -14,7 +14,7 @@ exports.handler = async (event) => {
   // supply the services SID to this function
 
   //   twilio doesn't enforce a strict data structure, but when you update it it should maintain the same structure
-  //   so you need to remember the document you pass
+  //   so you need to remember the document name you pass
   const result = await twilio.sync
     .services(process.env.TWILIO_SERVICE_SID)
     .documents.create('JSB Text To Vote Results');
