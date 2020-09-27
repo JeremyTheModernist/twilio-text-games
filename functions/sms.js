@@ -10,7 +10,7 @@ exports.handler = async (event) => {
     },
     body: `
         <Response>
-            <Message>Thank you for voting. Your replied with: ${body}</Message>
+            <Message>Thank you for voting. Your replied with:</Message>
         </Response>
     `,
   };
