@@ -24,7 +24,7 @@ exports.handler = async (event) => {
 
   // after the document is created then just use the update method
 
-  console.log('TWILIO RESULT', result);
+  //   console.log('TWILIO RESULT', result);
   const { Body } = qs.parse(event.body);
   console.log('CHECK OUT ALL MY MESSAGE', Body);
   const vote = Body.match(/yes/i) ? 'yes' : 'no';
@@ -34,6 +34,8 @@ exports.handler = async (event) => {
     .documents('IS7473257f7b67069feeb8afe54f1732aa')
     .fetch();
 
+  console.log('TWILIO FETCH RESULT', data);
+
   const newData = {
     ...data,
     [vote]: data[vote] + 1,
@@ -42,7 +44,7 @@ exports.handler = async (event) => {
   await twilio.sync
     .services(process.env.TWILIO_SERVICE_SID)
     .documents('IS7473257f7b67069feeb8afe54f1732aa')
-    .update(newData);
+    .update({ data: newData });
 
   return {
     statusCode: 200,
