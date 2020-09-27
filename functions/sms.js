@@ -1,5 +1,6 @@
-exports.handler = async () => {
-  console.log('CHECK OUT ALL MY MESSAGE');
+exports.handler = async (event) => {
+  const { body } = JSON.parse(even.body);
+  console.log('CHECK OUT ALL MY MESSAGE'.event);
   return {
     statusCode: 200,
     headers: {
@@ -7,7 +8,7 @@ exports.handler = async () => {
     },
     body: `
         <Response>
-            <Message>I have recieved a text</Message>
+            <Message>Thank you for voting. Your replied with: ${body}</Message>
         </Response>
     `,
   };
