@@ -31,20 +31,20 @@ exports.handler = async (event) => {
 
   const { data } = await twilio.sync
     .services(process.env.TWILIO_SERVICE_SID)
-    .documents('IS7473257f7b67069feeb8afe54f1732aa')
+    .documents()
     .fetch();
 
   console.log('TWILIO FETCH RESULT', data);
 
-  const newData = {
-    ...data,
-    [vote]: data[vote] + 1,
-  };
+  //   const newData = {
+  //     ...data,
+  //     [vote]: data[vote] + 1,
+  //   };
 
-  await twilio.sync
-    .services(process.env.TWILIO_SERVICE_SID)
-    .documents('IS7473257f7b67069feeb8afe54f1732aa')
-    .update({ data: newData });
+  //   await twilio.sync
+  //     .services(process.env.TWILIO_SERVICE_SID)
+  //     .documents('IS7473257f7b67069feeb8afe54f1732aa')
+  //     .update({ data: newData });
 
   return {
     statusCode: 200,
