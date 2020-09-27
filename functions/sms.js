@@ -17,7 +17,9 @@ exports.handler = async (event) => {
   //   so you need to remember the document name you pass
   const result = await twilio.sync
     .services(process.env.TWILIO_SERVICE_SID)
-    .documents.create('JSB Text To Vote Results');
+    .documents.create({
+      uniqueName: 'JSB Text To Vote Results',
+    });
   console.log('TWILIO RESULT', result);
   const { Body } = qs.parse(event.body);
   console.log('CHECK OUT ALL MY MESSAGE', Body);
