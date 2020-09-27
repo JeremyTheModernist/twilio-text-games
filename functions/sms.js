@@ -1,8 +1,8 @@
 const qs = require('querystring');
 
 exports.handler = async (event) => {
-  const body = qs.parse(event.body);
-  console.log('CHECK OUT ALL MY MESSAGE', event);
+  const { Body } = qs.parse(event.body);
+  console.log('CHECK OUT ALL MY MESSAGE', Body);
   return {
     statusCode: 200,
     headers: {
@@ -10,7 +10,7 @@ exports.handler = async (event) => {
     },
     body: `
         <Response>
-            <Message>Thank you for voting. Your replied with:</Message>
+            <Message>Thank you for voting. Your replied with:  ${Body}</Message>
         </Response>
     `,
   };
