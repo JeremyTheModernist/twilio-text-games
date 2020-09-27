@@ -19,7 +19,7 @@ exports.handler = async (event) => {
   const result = await twilio.sync
     .services(process.env.TWILIO_SERVICE_SID)
     .documents.create({
-      uniqueName: 'JSB Text To Vote Results',
+      uniqueName: 'JSB Second Text To Vote Results',
     });
 
   // after the document is created then just use the update method
