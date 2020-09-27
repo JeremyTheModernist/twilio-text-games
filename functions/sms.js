@@ -1,5 +1,7 @@
+const qs = require('querystring');
+
 exports.handler = async (event) => {
-  const { body } = JSON.parse(event.body);
+  const { body } = qs.parse(event.body);
   console.log('CHECK OUT ALL MY MESSAGE'.event);
   return {
     statusCode: 200,
