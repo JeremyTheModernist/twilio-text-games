@@ -1,8 +1,8 @@
 const qs = require('querystring');
 
 exports.handler = async (event) => {
-  const { body } = qs.parse(event.body);
-  console.log('CHECK OUT ALL MY MESSAGE'.event);
+  const body = qs.parse(event.body);
+  console.log('CHECK OUT ALL MY MESSAGE', event);
   return {
     statusCode: 200,
     headers: {
